@@ -1,0 +1,84 @@
+#Apresentação
+print("---------------")
+print("-Welcome to 21-")
+print("---------------")
+
+print("\n-----")
+print("-Rules-")
+print("--- ---")
+
+print("1 - At the start of each player's turn, they choose whether or not to receive a random amount of points between 1 and 10.\n")
+print("2 - If any player exceeds the 21 point limit, they immediately lose.")
+print("4 - The player closest to 21 points wins.")
+print("3 - If the players end with the same quantity of points, the result is a tie.\n")
+
+#Inicio
+from random import randint
+
+P1 = 0
+P2 = 0
+
+P1f = False
+P2f = False
+
+RespostaS = ["y","yes"]
+RespostaN = ["n","no"]
+
+while True:
+        
+    
+    if P1f == False:
+        Resposta1 = input("Player \033[1m1\033[0m, Would you like to receive the points?: ")
+        if Resposta1.lower() in RespostaN:
+            print(f"\Player \033[1m1\033[0m ended his round with \033[1m{P1}\033[0m points!")
+            P1f = True
+            pass
+        elif Resposta1.lower() in RespostaS and P1 <= 21:
+            Luck = randint(1,10)
+            P1 += Luck
+            print(f"Player \033[1m1\033[0m received \033[1m{Luck}\033[0m Points!")
+            print(f"\nPlayer \033[1m1\033[0m Have \033[1m{P1}\033[0m Points!")
+            if P1 > 21:
+                print("\nPlayer \033[1m1\033[0m \033[1mbroke\033[0m the points limit!")
+                P1f = True
+        else:
+            print("\nEnter a valid value. Yes or No.")
+            continue
+    else:
+        pass
+
+    if P2f == False:
+        Resposta2 = input("\Player \033[1m2\033[0m, Would you like to receive the points?: ")
+        if Resposta2.lower() in RespostaN:
+            print(f"\nPlayer \033[1m2\033[0m ended his round with \033[1m{P2}\033[0m Points!")
+            P2f = True
+            pass
+        elif Resposta2.lower() in RespostaS and P2 <= 21:
+            Luck = randint(1,10)
+            P2 += Luck
+            print(f"\nPlayer \033[1m2\033[0m received \033[1m{Luck}\033[0m Points!")
+            print(f"\nPlayer \033[1m2\033[0m Have \033[1m{P2}\033[0m Points!\n")
+            if P2 > 21:
+                print("\nPlayer \033[1m2\033[0m \033[1mBroke\033[0m the points limit!\n")
+                P2f = True
+        else:
+            print("\nEnter a valid value. Yes or No.")
+            continue
+    else:
+        pass
+    
+    if P1f and P2f == True:
+        break
+
+if P1f > P2f and P1f <= 21:
+    print("--------------")
+    print("-Player 1 Won-")
+    print("--------------")
+elif P1f == P2f:
+    print("-------------------------")
+    print("-The Players Tied!-")
+    print("-------------------------")
+else:
+    print("------------------")
+    print("-Player 2 Won!-")
+    print("------------------")
